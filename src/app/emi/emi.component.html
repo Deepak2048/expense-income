@@ -1,0 +1,143 @@
+<div class="container-fliud">
+  <div class="row">
+    <div class="col-12 basicinformation">
+      <h2>Basic Information</h2>
+      <form (submit)="emi()">
+        <div class="form-group">
+          <label for="title">Title:</label><br>
+          <input type="text" id="title" name="title" [(ngModel)]="title" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label><br>
+          <input type="text" id="description" name="description" [(ngModel)]="description" required>
+        </div>
+        <div class="form-group">
+          <label for="amount">Amount:</label><br>
+          <input type="int" id="amount" name="amount" [(ngModel)]="amount" required>
+        </div>
+        <div class="type">
+          <label for="type">Choose a type:</label><br>
+          <select name="type" id="type" [(ngModel)]="type">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+        </div>
+        <div class="category">
+          <label for="category">Choose a category:</label><br>
+          <select name="category" [(ngModel)]="category">
+            <option value="assets">Assets</option>
+            <option value="salary">Salary</option>
+            <option value="events">Events</option>
+            <option value="party">Party</option>
+            <option value="tools">Tools</option>
+            <option value="others">Others</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="fileInput">Documents upload:</label>
+          <input type="file" id="fileInput" name="files" [(ngModel)]="files" multiple>
+        </div>
+        <div class="form-group">
+          <label for="date">Date:</label><br>
+          <input type="date" id="date" name="date" [(ngModel)]="date" required>
+        </div>
+        <button type="submit">save</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="basicInformation">
+  <div class="filterData">
+    <div>
+      <label>Type:</label>
+      <select [(ngModel)]="filterType" (change)="filterBasicInfo()">
+        <option value="" selected>All</option>
+        <option value="expense">Expense</option>
+        <option value="income">Income</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Category:</label>
+      <select [(ngModel)]="filterCategory" (change)="filterBasicInfo()">
+        <option value="" selected>All</option>
+        <option value="assets">Assets</option>
+        <option value="salary">Salary</option>
+        <option value="events">Events</option>
+        <option value="party">Party</option>
+        <option value="tools">Tools</option>
+        <option value="others">Others</option>
+      </select>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Type</th>
+        <th>Category</th>
+        <th>Files</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let info of filteredBasicInformationList">
+        <td>{{ info.id }}</td>
+        <td>{{ info.title }}</td>
+        <td>{{ info.description }}</td>
+        <td>{{ info.amount }}</td>
+        <td>{{ info.type }}</td>
+        <td>{{ info.category }}</td>
+        <td>{{ info.files }}</td>
+        <td>{{ info.date }}</td>
+        <td><button class="deletebasicinfo" (click)="deleteBasicInfo(info.id )"><i class="fa fa-trash"
+              aria-hidden="true"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
+<div class="stats">
+  <h2>Stats for Expense , Income and Catogery</h2>
+  <div style="width: 800px;"><canvas id="acquisitions"></canvas></div>
+</div>
+
+
+<!-- <div>
+  <h2>Overall Statistics</h2> -->
+<!-- <p>Total Users: {{ overallStats.totalUsers }}</p>
+  <p>Total Sales: {{ overallStats.totalSales }}</p> -->
+<!-- Add more overall statistics as needed -->
+<!-- </div> -->
+
+<div *ngIf="getIncome">
+  <h2>Expense Statistics</h2>
+  <ul>
+    <!-- <li *ngFor="let expense of getIncome">
+      <strong>Date:</strong> {{ expense.date }}
+      <br />
+      <strong>Amount:</strong> {{ expense.amount }}
+      <br /> -->
+    <!-- Add more fields as needed -->
+    <!-- </li> -->
+  </ul>
+</div>
+
+<div *ngIf="getExpense">
+  <h2>Income Statistics</h2>
+  <!-- Display income statistics -->
+</div>
+
+<div *ngIf="mostUsedCategory">
+  <h2>Category Statistics</h2>
+  <!-- Display category statistics -->
+</div>

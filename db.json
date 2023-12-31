@@ -1,0 +1,80 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "basicinformation": [
+    {
+      "title": "book",
+      "description": "very good bood",
+      "amount": "600",
+      "type": "expense",
+      "category": "assets",
+      "files": "C:\\fakepath\\64-text-white-jpeg.jpg",
+      "date": "2023-12-24",
+      "id": 6
+    },
+    {
+      "title": "regrg",
+      "description": "good movies",
+      "amount": "250",
+      "type": "expense",
+      "category": "events",
+      "files": "C:\\fakepath\\Screenshot 2023-02-07 125010.png",
+      "date": "2023-12-01",
+      "id": 15
+    },
+    {
+      "title": "jgf",
+      "description": "very good ",
+      "amount": "600",
+      "type": "income",
+      "category": "party",
+      "files": "C",
+      "date": "2023-11-28",
+      "id": 16
+    },
+    {
+      "title": "mnvbvcv",
+      "description": "asrtui",
+      "amount": "2145",
+      "type": "expense",
+      "category": "salary",
+      "date": "2021-06-10",
+      "id": 17
+    },
+    {
+      "title": "kjgfdz",
+      "description": "gfdsafgj",
+      "amount": "5687",
+      "type": "income",
+      "category": "events",
+      "files": "C:\\fakepath\\page-dvt.png",
+      "date": "2023-12-03",
+      "id": 18
+    },
+    {
+      "title": "React js",
+      "description": "it is most popular farmework",
+      "amount": "1499",
+      "type": "expense",
+      "category": "tools",
+      "files": "C:\\fakepath\\quality-audit (1).png",
+      "date": "2023-12-27",
+      "id": 19
+    }
+  ]
+}

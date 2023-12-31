@@ -1,0 +1,21 @@
+.navbar {
+  margin-top: 0;
+  background-color: orange;
+}
+
+.navbar-nav {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  list-style: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.nav-item a {
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: black;
+}

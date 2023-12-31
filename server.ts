@@ -1,3 +1,75 @@
+// // server.js
+// const express = require('express');
+// const bodyParser = require('body-parser');
+// const mysql = require('mysql');
+// import { Request, Response } from 'express';
+
+// const app = express();
+// const port = process.env['PORT'] || 3000;
+
+// // MySQL connection
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: 'root',
+//   database: 'expenseincome',
+// });
+
+// connection.connect();
+
+// // Middleware
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+
+// // Express routes
+// app.post('/api/register', (req: Request, res: Response) => {
+//   const { name, email, password } = req.body;
+
+//   const query = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
+//   connection.query(query, [name, email, password], (error: Error | null, results: any) => {
+//     if (error) {
+//       console.error(error);
+//       res.status(500).json({ success: false, message: 'Registration failed' });
+//     } else {
+//       res.json({ success: true, message: 'Registration successful' });
+//     }
+//   });
+// });
+
+// // Start the server
+// app.listen(port, () => {
+//   console.log(`Server is running on http://localhost:${port}`);
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonEngine } from '@angular/ssr';
 import express from 'express';

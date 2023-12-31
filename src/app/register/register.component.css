@@ -1,0 +1,25 @@
+.registerpage {
+  background-color: aqua;
+  width: 280px;
+  padding: 5px 10px;
+  left: 30%;
+  padding-left: 50px;
+  padding-bottom: 10px;
+  margin-left: 540px;
+}
+
+.form-group input {
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+}
+.registerpage form button {
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}

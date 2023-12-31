@@ -1,3 +1,19 @@
 import { Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { EmiComponent } from './emi/emi.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'register',
+        component: RegisterComponent
+    },
+    {
+        path: 'emi',
+        component: EmiComponent
+    },
+];
