@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BasicInfoServiceService } from '../service/basic-info-service.service';
-import { Chart } from 'chart.js';
+import { Chart } from 'chart.js/auto';
 
 @Component({
   selector: 'app-emi',
@@ -22,24 +22,27 @@ export class EmiComponent implements OnInit {
   allExpense: any;
   allCategory: any;
 
-  constructor(
-    private basicInfoServiceService: BasicInfoServiceService,
-  ) {}
+  constructor(private basicInfoServiceService: BasicInfoServiceService) {}
   ngOnInit(): void {
     this.findAllBasicInformation();
-    // this.RenderStats()
-    // this.getIncome();
-    // this.getExpense();
     this.mostUsedCategory();
+    this.statsData();
   }
 
   title: string = '';
   description: string = '';
-  amount: string = '';
+  amount: number = 0.0;
   type: string = '';
   category: string = '';
   files: File[] = [];
   date: string = '';
+
+  statData: any;
+  amountData: any[] = [];
+
+  totalExpense: number = 0.0;
+  totalIncome: number = 0.0;
+  balanceAmount: number = 0.0;
 
   emi() {
     this.basicInfoServiceService
@@ -54,7 +57,7 @@ export class EmiComponent implements OnInit {
       })
       .subscribe({
         next: (data) => {
-          alert("successfully!")
+          alert('successfully!');
         },
         error: (err) => {
           console.log(err);
@@ -113,41 +116,6 @@ export class EmiComponent implements OnInit {
     });
   }
 
-  getIncome() {
-    this.basicInfoServiceService.listBasicInformation().subscribe({
-      next: (data) => {
-        console.log('************', data);
-
-        const incomeData = data.filter((info: any) => {
-          console.log('info  type', info.type === 'income');
-          return info.type === 'income';
-        });
-        console.log('-------------------', incomeData);
-
-        return (this.allIncome = incomeData);
-      },
-      error: (error) => {
-        console.log('got error while listing income', error);
-      },
-    });
-  }
-
-  getExpense() {
-    this.basicInfoServiceService.listBasicInformation().subscribe({
-      next: (data) => {
-        const expenseData = data.filter((info: any) => {
-          return info.type === 'expense';
-        });
-        console.log('expenseData', expenseData);
-
-        return (this.allExpense = expenseData);
-      },
-      error: (error) => {
-        console.log('got error while listing expense', error);
-      },
-    });
-  }
-
   mostUsedCategory() {
     this.basicInfoServiceService.listBasicInformation().subscribe({
       next: (data) => {
@@ -180,38 +148,59 @@ export class EmiComponent implements OnInit {
     });
   }
 
-  RenderStats(){
-    const data = [
-      { year: 2010, count: 10 },
-      { year: 2011, count: 20 },
-      { year: 2012, count: 15 },
-      { year: 2013, count: 25 },
-      { year: 2014, count: 22 },
-      { year: 2015, count: 30 },
-      { year: 2016, count: 28 },
-    ];
+  statsData() {
+    this.basicInfoServiceService.listBasicInformation().subscribe({
+      next: (data) => {
+        this.statData = data;
+        if (data != null) {
+          for (let i = 0; i < this.statData.length; i++) {
+            if (this.statData[i].type === 'expense') {
+              this.totalExpense = this.totalExpense + this.statData[i].amount;
+            } else {
+              this.totalIncome = this.totalIncome + this.statData[i].amount;
+            }
 
-    const myStats = new Chart(
-      'acquisitions',
-      {
-        type: 'bar',
-        data: {
-          labels: data.map(row => row.year),
-          datasets: [
-            {
-              label: 'Acquisitions by year',
-              data: data.map(row => row.count)
-            }
-          ]
-        },
-        options:{
-          scales:{
-            y: {
-              beginAtZero: true
-            }
+            this.amountData.push(this.statData[i].amount);
           }
+          if (this.totalExpense > this.totalIncome) {
+            this.balanceAmount = this.totalExpense - this.totalIncome;
+          } else {
+            this.balanceAmount = this.totalIncome - this.totalExpense;
+          }
+          this.RenderStats(
+            this.totalExpense,
+            this.totalIncome,
+            this.balanceAmount
+          );
         }
-      }
-    );
+      },
+      error: (error) => {
+        console.log('got error while listing income', error);
+      },
+    });
+  }
+
+  RenderStats(totalExpense: any, totalIncome: any, balanceData: any) {
+    new Chart('statsId', {
+      type: 'bar',
+      data: {
+        labels: ['Income', 'Expense', 'Balance sheet', 'Top Category'],
+        datasets: [
+          {
+            label: '# of Expense-Income',
+            data: [totalExpense, totalIncome, balanceData],
+            borderWidth: 1,
+            // backgroundColor:[#36A2EB80],
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
   }
 }

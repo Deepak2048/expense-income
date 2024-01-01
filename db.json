@@ -20,7 +20,7 @@
     {
       "title": "book",
       "description": "very good bood",
-      "amount": "600",
+      "amount": 600,
       "type": "expense",
       "category": "assets",
       "files": "C:\\fakepath\\64-text-white-jpeg.jpg",
@@ -30,7 +30,7 @@
     {
       "title": "regrg",
       "description": "good movies",
-      "amount": "250",
+      "amount": 250,
       "type": "expense",
       "category": "events",
       "files": "C:\\fakepath\\Screenshot 2023-02-07 125010.png",
@@ -40,7 +40,7 @@
     {
       "title": "jgf",
       "description": "very good ",
-      "amount": "600",
+      "amount": 600,
       "type": "income",
       "category": "party",
       "files": "C",
@@ -50,7 +50,7 @@
     {
       "title": "mnvbvcv",
       "description": "asrtui",
-      "amount": "2145",
+      "amount": 2145,
       "type": "expense",
       "category": "salary",
       "date": "2021-06-10",
@@ -59,7 +59,7 @@
     {
       "title": "kjgfdz",
       "description": "gfdsafgj",
-      "amount": "5687",
+      "amount": 5687,
       "type": "income",
       "category": "events",
       "files": "C:\\fakepath\\page-dvt.png",
@@ -69,7 +69,7 @@
     {
       "title": "React js",
       "description": "it is most popular farmework",
-      "amount": "1499",
+      "amount": 1499,
       "type": "expense",
       "category": "tools",
       "files": "C:\\fakepath\\quality-audit (1).png",
